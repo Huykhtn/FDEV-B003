@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    
+    <!-- Latest compiled and minified CSS & JS -->
+    <link rel="stylesheet" media="screen" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    
+</head>
+<body>
+    
+    <div class="container">
+        
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            
+            <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <legend>Thông tin học sinh</legend>
+                    </div>
+            
+                    <div class="form-group">
+                        <div class="col-sm-2">
+                            Họ tên:
+                        </div>
+                        <div class="col-sm-10">
+                            <input type="text" name="" id="ho_ten" class="form-control" value="" required="required" pattern="" title="">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-2">
+                            Nghề nghiệp:
+                        </div>
+                        <div class="col-sm-10">
+                            <input type="text" name="" id="nghe_nghiep" class="form-control" value="" required="required" pattern="" title="">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-2">
+                            Giới tính:
+                        </div>
+                        <div class="col-sm-10">
+                            
+                            <select name="" id="gioi_tinh" class="form-control" required="required">
+                                <option value="Nam">Nam</option>
+                                <option value="Nữ">Nữ</option>
+                                <option value="Khác">Khác</option>
+                            </select>
+                            
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-2">
+                            Ngày sinh:
+                        </div>
+                        <div class="col-sm-10">
+                            <input type="date" name="" id="ngay_sinh" class="form-control" value="" required="required" title="">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-2">
+                            Giới thiệu:
+                        </div>
+                        <div class="col-sm-10">
+                            <textarea name="" id="gioi_thieu" class="form-control" rows="3" required="required"></textarea>
+                        </div>
+                    </div>
+            
+                    <div class="form-group">
+                        <div class="col-sm-10 col-sm-offset-2">
+                            <button type="button" class="btn btn-primary" onclick="luu_thong_tin_hoc_vien()">Lưu thông tin</button>
+                        </div>
+                    </div>
+            </form>
+            
+        </div>
+
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div id="danh_sach_hoc_vien"></div>
+        </div>
+        
+    </div>
+
+    <script>
+        hoc_vien = {
+            ho_ten: '',
+            nghe_nghiep: '',
+            gioi_tinh: '',
+            ngay_sinh: '',
+            gioi_thieu: ''
+        };
+
+        //console.log(hoc_vien);
+
+        var elm_danh_sach_hoc_vien = document.getElementById('danh_sach_hoc_vien');
+
+        var mang_hoc_vien = [];
+
+        function luu_thong_tin_hoc_vien(){
+            //console.log('chạy function')
+            ho_ten = document.getElementById('ho_ten');
+            nghe_nghiep = document.getElementById('nghe_nghiep');
+            gioi_tinh = document.getElementById('gioi_tinh');
+            ngay_sinh = document.getElementById('ngay_sinh');
+            gioi_thieu = document.getElementById('gioi_thieu');
+
+            //console.log(ngay_sinh.value);
+
+            if(ho_ten.value != '' || nghe_nghiep.value != '' || ngay_sinh.value != '' || gioi_thieu.value != ''){
+                var hoc_vien_temp = {
+                    ho_ten: ho_ten.value,
+                    nghe_nghiep: nghe_nghiep.value,
+                    gioi_tinh: gioi_tinh.value,
+                    ngay_sinh: ngay_sinh.value,
+                    gioi_thieu: gioi_thieu.value
+                }
+
+                mang_hoc_vien.push(hoc_vien_temp);
+            }
+            else{
+                alert('vui lòng nhập đầy đủ thông tin');
+            }
+
+            //console.log(mang_hoc_vien);
+            in_danh_sach_mang();
+        }
+
+        function in_danh_sach_mang() {
+            elm_danh_sach_hoc_vien.innerHTML = '';
+            mang_hoc_vien.forEach((item, index) => {
+                console.log(item);
+                elm_hoc_vien = document.createElement('div');
+                ho_ten_div = document.createElement('div');
+                ngay_sinh_div = document.createElement('div');
+
+                ho_ten_div.innerText = item.ho_ten;
+                ngay_sinh_div.innerText = item.ngay_sinh;
+
+                elm_hoc_vien.appendChild(ho_ten_div).appendChild(ngay_sinh_div);
+
+                elm_danh_sach_hoc_vien.appendChild(elm_hoc_vien);
+            })
+        }
+    </script>
+    
+</body>
+</html>

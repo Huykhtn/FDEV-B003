@@ -18,13 +18,42 @@
 
     <div id="slider">
     </div>
+    <div id="" class="select_animation">
+        <select name="" id="select_animation" onchange="change_animation()">
+            
+        </select>
+    </div>
 
     <script>
         var mang_image = [];
         var so_luong_image = 5;
         var current_item = 0;
         var flag_first_time = 0;
-        var animation_name = 'toggle';
+        var animation_name = 'opacity';
+
+        var mang_hieu_ung = ['opacity', 'toggle'];
+        var select_elm = document.getElementById('select_animation');
+
+        for(i = 0; i < mang_hieu_ung.length; i++){
+            var option_elm = document.createElement('option');
+            option_elm.value = mang_hieu_ung[i];
+            option_elm.innerText = mang_hieu_ung[i];
+            select_elm.appendChild(option_elm);
+        }
+
+        // select_elm.addEventListener('change', () => {
+        //     //console.log(select_elm.value);
+        //     animation_name = select_elm.value;
+        //     //console.log(animation_name)
+        //     document.getElementById('slider').className = animation_name;
+        // })
+
+        function change_animation(){
+            //console.log(select_elm.value);
+            animation_name = select_elm.value;
+            //console.log(animation_name)
+            document.getElementById('slider').className = animation_name;
+        }
 
         document.getElementById('slider').className = animation_name;
 
