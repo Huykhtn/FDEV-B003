@@ -1,0 +1,22 @@
+body {
+    /* background: #ccc; */
+}
+
+.popup_thong_tin_chi_tiet {
+    position: fixed;
+    z-index: 1;
+    width: 600px;
+    top: 20px;
+    left: 35%;
+    display: none;
+}
+
+.button_close {
+    position: absolute;
+    right: 10px;
+    top: 4px;
+    padding: 5px 10px;
+    background: #f00;
+    color: #fff;
+    border-radius: 5px;
+}

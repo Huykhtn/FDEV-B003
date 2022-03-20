@@ -1,93 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    
+
     <!-- Latest compiled and minified CSS & JS -->
     <link rel="stylesheet" media="screen" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    
+
+    <link rel="stylesheet" href="style_ds_hoc_vien.css">
 </head>
+
 <body>
-    
+
     <div class="container">
-        
+
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-            
+
             <form class="form-horizontal" role="form">
-                    <div class="form-group">
-                        <legend>Thông tin học sinh</legend>
-                    </div>
-            
-                    <div class="form-group">
-                        <div class="col-sm-2">
-                            Họ tên:
-                        </div>
-                        <div class="col-sm-10">
-                            <input type="text" name="" id="ho_ten" class="form-control" value="" required="required" pattern="" title="">
-                        </div>
-                    </div>
+                <div class="form-group">
+                    <legend>Thông tin học sinh</legend>
+                </div>
 
-                    <div class="form-group">
-                        <div class="col-sm-2">
-                            Nghề nghiệp:
-                        </div>
-                        <div class="col-sm-10">
-                            <input type="text" name="" id="nghe_nghiep" class="form-control" value="" required="required" pattern="" title="">
-                        </div>
+                <div class="form-group">
+                    <div class="col-sm-2">
+                        Họ tên:
                     </div>
+                    <div class="col-sm-10">
+                        <input type="text" name="" id="ho_ten" class="form-control" value="" required="required"
+                            pattern="" title="">
+                    </div>
+                </div>
 
-                    <div class="form-group">
-                        <div class="col-sm-2">
-                            Giới tính:
-                        </div>
-                        <div class="col-sm-10">
-                            
-                            <select name="" id="gioi_tinh" class="form-control" required="required">
-                                <option value="Nam">Nam</option>
-                                <option value="Nữ">Nữ</option>
-                                <option value="Khác">Khác</option>
-                            </select>
-                            
-                        </div>
+                <div class="form-group">
+                    <div class="col-sm-2">
+                        Nghề nghiệp:
                     </div>
+                    <div class="col-sm-10">
+                        <input type="text" name="" id="nghe_nghiep" class="form-control" value="" required="required"
+                            pattern="" title="">
+                    </div>
+                </div>
 
-                    <div class="form-group">
-                        <div class="col-sm-2">
-                            Ngày sinh:
-                        </div>
-                        <div class="col-sm-10">
-                            <input type="date" name="" id="ngay_sinh" class="form-control" value="" required="required" title="">
-                        </div>
+                <div class="form-group">
+                    <div class="col-sm-2">
+                        Giới tính:
                     </div>
+                    <div class="col-sm-10">
 
-                    <div class="form-group">
-                        <div class="col-sm-2">
-                            Giới thiệu:
-                        </div>
-                        <div class="col-sm-10">
-                            <textarea name="" id="gioi_thieu" class="form-control" rows="3" required="required"></textarea>
-                        </div>
+                        <select name="" id="gioi_tinh" class="form-control" required="required">
+                            <option value="Nam">Nam</option>
+                            <option value="Nữ">Nữ</option>
+                            <option value="Khác">Khác</option>
+                        </select>
+
                     </div>
-            
-                    <div class="form-group">
-                        <div class="col-sm-10 col-sm-offset-2">
-                            <button type="button" class="btn btn-primary" onclick="luu_thong_tin_hoc_vien()">Lưu thông tin</button>
-                        </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-2">
+                        Ngày sinh:
                     </div>
+                    <div class="col-sm-10">
+                        <input type="date" name="" id="ngay_sinh" class="form-control" value="" required="required"
+                            title="">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-2">
+                        Giới thiệu:
+                    </div>
+                    <div class="col-sm-10">
+                        <textarea name="" id="gioi_thieu" class="form-control" rows="3" required="required"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-10 col-sm-offset-2">
+                        <button type="button" class="btn btn-primary" onclick="luu_thong_tin_hoc_vien()">Lưu thông
+                            tin</button>
+                    </div>
+                </div>
             </form>
-            
+
         </div>
 
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-            <div id="danh_sach_hoc_vien"></div>
+
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Họ tên</th>
+                            <th>Ngày sinh</th>
+                        </tr>
+                    </thead>
+                    <tbody id="danh_sach_hoc_vien">
+                    </tbody>
+                </table>
+            </div>
+
         </div>
-        
+
+    </div>
+
+    <div id="popup_thong_tin_chi_tiet" class="popup_thong_tin_chi_tiet">
+
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">Thông tin chi tiết học viên</h3>
+                <div class="button_close" onclick="hide_hoc_vien()">x</div>
+            </div>
+            <div class="panel-body">
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                    <img src="" alt="">
+                </div>
+
+                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                    <div class="info">
+                        Họ tên: <span id="ho_ten_popup"></span>
+                    </div>
+                    <div class="info">
+                        Nghề nghiệp: <span id="nghe_nghiep_popup"></span>
+                    </div>
+                    <div class="info">
+                        Giới tính: <span id="gioi_tinh_popup"></span>
+                    </div>
+                    <div class="info">
+                        Ngày sinh: <span id="ngay_sinh_popup"></span>
+                    </div>
+                    <div class="info">
+                        Giới thiệu: <span id="gioi_thieu_popup"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
     </div>
 
     <script>
@@ -102,10 +159,11 @@
         //console.log(hoc_vien);
 
         var elm_danh_sach_hoc_vien = document.getElementById('danh_sach_hoc_vien');
+        var elm_popup_thong_tin_chi_tiet = document.getElementById('popup_thong_tin_chi_tiet');
 
         var mang_hoc_vien = [];
 
-        function luu_thong_tin_hoc_vien(){
+        function luu_thong_tin_hoc_vien() {
             //console.log('chạy function')
             ho_ten = document.getElementById('ho_ten');
             nghe_nghiep = document.getElementById('nghe_nghiep');
@@ -115,7 +173,7 @@
 
             //console.log(ngay_sinh.value);
 
-            if(ho_ten.value != '' || nghe_nghiep.value != '' || ngay_sinh.value != '' || gioi_thieu.value != ''){
+            if (ho_ten.value != '' || nghe_nghiep.value != '' || ngay_sinh.value != '' || gioi_thieu.value != '') {
                 var hoc_vien_temp = {
                     ho_ten: ho_ten.value,
                     nghe_nghiep: nghe_nghiep.value,
@@ -125,8 +183,15 @@
                 }
 
                 mang_hoc_vien.push(hoc_vien_temp);
+
+                ho_ten.value = '';
+                nghe_nghiep.value = '';
+                gioi_tinh.value = 'Nam';
+                ngay_sinh.value = '';
+                gioi_thieu.value = '';
+
             }
-            else{
+            else {
                 alert('vui lòng nhập đầy đủ thông tin');
             }
 
@@ -134,23 +199,47 @@
             in_danh_sach_mang();
         }
 
+        var show_hoc_vien = (event) => {
+            elm_popup_thong_tin_chi_tiet.style = 'display: block';
+            var id_cur_hoc_vien = event.path[1].getAttribute('data-id-hocvien');
+
+            var hoc_vien_duoc_view = mang_hoc_vien[id_cur_hoc_vien];
+
+            document.getElementById('ho_ten_popup').innerHTML = hoc_vien_duoc_view.ho_ten;
+            document.getElementById('nghe_nghiep_popup').innerHTML = hoc_vien_duoc_view.nghe_nghiep;
+            document.getElementById('gioi_tinh_popup').innerHTML = hoc_vien_duoc_view.gioi_tinh;
+            document.getElementById('ngay_sinh_popup').innerHTML = hoc_vien_duoc_view.ngay_sinh;
+            document.getElementById('gioi_thieu_popup').innerHTML = hoc_vien_duoc_view.gioi_thieu;
+            //console.log(event.path[1].getAttribute('data-id-hocvien'));
+        };
+
+        function hide_hoc_vien() {
+            elm_popup_thong_tin_chi_tiet.style = 'display: none';
+        }
+
         function in_danh_sach_mang() {
             elm_danh_sach_hoc_vien.innerHTML = '';
             mang_hoc_vien.forEach((item, index) => {
                 console.log(item);
-                elm_hoc_vien = document.createElement('div');
-                ho_ten_div = document.createElement('div');
-                ngay_sinh_div = document.createElement('div');
+                elm_hoc_vien = document.createElement('tr');
+                ho_ten_div = document.createElement('td');
+                ngay_sinh_div = document.createElement('td');
 
                 ho_ten_div.innerText = item.ho_ten;
                 ngay_sinh_div.innerText = item.ngay_sinh;
 
-                elm_hoc_vien.appendChild(ho_ten_div).appendChild(ngay_sinh_div);
+                elm_hoc_vien.appendChild(ho_ten_div);
+                elm_hoc_vien.appendChild(ngay_sinh_div);
+
+                elm_hoc_vien.setAttribute('data-id-hocvien', index);
+
+                elm_hoc_vien.addEventListener('click', show_hoc_vien);
 
                 elm_danh_sach_hoc_vien.appendChild(elm_hoc_vien);
             })
         }
     </script>
-    
+
 </body>
+
 </html>
