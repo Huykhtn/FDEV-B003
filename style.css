@@ -1,0 +1,56 @@
+body {
+    background: #ccc;
+}
+
+#slider {
+    width: 250px;
+    margin: auto;
+    position: relative;
+}
+
+#slider img {
+    width: 100%;
+}
+
+#slider .button_left, #slider .button_right {
+    font-size: 30px;
+    position: absolute;
+    top: 110px;
+    cursor: pointer;
+}
+
+#slider .button_left {
+    left: 0;
+}
+
+#slider .button_right {
+    right: 0;
+}
+
+#slider.opacity img.inactive {
+    visibility: hidden;
+    opacity: 0;
+}
+
+#slider.opacity img.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+#slider.toggle img.inactive {
+    width: 0px;
+    height: 0px;
+    opacity: 0;
+}
+
+#slider.toggle img.active {
+    opacity: 1;
+    width: 250px;
+    height: 250px;
+}
+
+#slider img {
+    position: absolute;
+    top: 0;
+    transition: ease all 0.5s;
+}
